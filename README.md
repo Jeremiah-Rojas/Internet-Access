@@ -2,6 +2,7 @@
 
 ## Network Topology
 
+</br> The following lab shows how a python script can automate the creation of VLANs while giving the computers within them access to the internet.
 
 ### Devices Used:
 - Cisco IOSv 15.7 router
@@ -9,8 +10,6 @@
 - GNS3 Software
 - Ubuntu Container (running on VMware machine)
 
-</br>
-The following lab shows how a python script can automate the creation of VLANs while giving them access to the internet.
 
 ## Configurations
 
