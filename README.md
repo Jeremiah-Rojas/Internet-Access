@@ -120,7 +120,9 @@ Now ```user 2``` can reach the internet from the Sales VLAN: <img width="877" he
 This is the script taking in input for the Marketing VLAN which will be VLAN 3: <img width="1044" height="805" alt="image" src="https://github.com/user-attachments/assets/daa6c7e1-8e50-4f25-a0f2-1a0ed5be3723" />
 Now ```user 3``` can reach the internet from the Marketing VLAN: <img width="902" height="381" alt="image" src="https://github.com/user-attachments/assets/25c99df8-a874-4833-8bce-b49c337c2632" />
 
+You can see the newly created VLANs on the switch: <img width="1034" height="428" alt="image" src="https://github.com/user-attachments/assets/aa1bb05d-e6b5-4fd4-999f-913b9345abdd" />
 
+These are the newly created subinterfaces on the router: <img width="1111" height="310" alt="image" src="https://github.com/user-attachments/assets/2ea766a9-3763-4035-b205-387b9ce6dbc6" />
 
 
 ## Python Script
