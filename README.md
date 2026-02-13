@@ -117,4 +117,9 @@ wr
 ## Python Script
 </br>This script is an improvement from the [VLAN-Automation](https://github.com/Jeremiah-Rojas/VLAN-Automation) script.
 </br>__It is recommended to ssh manually first.__
+SSH to the switch: <img width="1348" height="736" alt="image" src="https://github.com/user-attachments/assets/2c3d963c-f9eb-4819-80ea-dba8dde96ce4" />
+SSH to the router: <img width="1355" height="747" alt="image" src="https://github.com/user-attachments/assets/0a0e5434-e735-409a-b79b-3ae62009cacf" />
+</br>Afterwards you can exit the SSH sessions and then run the following script answering the questions accordingly.
+
+
 
