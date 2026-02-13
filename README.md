@@ -2,7 +2,7 @@
 
 ## Network Topology
 
-<img width="899" height="861" alt="image" src="https://github.com/user-attachments/assets/1391af5d-9710-4475-949f-6319ca63a517" />
+<img width="599" height="574" alt="image" src="https://github.com/user-attachments/assets/1391af5d-9710-4475-949f-6319ca63a517" />
 
 
 </br> The following lab shows how a python script can automate the creation of VLANs while giving the computers within them access to the internet.
