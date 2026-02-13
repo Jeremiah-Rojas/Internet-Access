@@ -113,6 +113,10 @@ wr
 ```
 
 ## Script in Action
+This is the script taking in input for the Sales VLAN which will be VLAN 2: <img width="1296" height="785" alt="image" src="https://github.com/user-attachments/assets/53075d5a-7a0f-4a4f-896a-bc8864ba1678" />
+
+This is the script taking in input for the Marketing VLAN which will be VLAN 3:
+
 
 ## Python Script
 </br>This script is an improvement from the [VLAN-Automation](https://github.com/Jeremiah-Rojas/VLAN-Automation) script.
