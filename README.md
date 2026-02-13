@@ -72,7 +72,6 @@ no shutdown
 end
 wr
 
-"It is recommended to ssh manually first"
 ```
 
 router configurations:
@@ -108,11 +107,11 @@ no shut
 end
 wr
 
-"It is recommended to ssh manually first"
 ```
 
 ## Script in Action
 
 ## Python Script
 </br>This script is an improvement from the [VLAN-Automation](https://github.com/Jeremiah-Rojas/VLAN-Automation) script.
+</br>__It is recommended to ssh manually first.__
 
