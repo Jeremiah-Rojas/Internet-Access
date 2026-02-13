@@ -57,7 +57,7 @@ end
 
 
 conf t
-interface g0/0
+interface g0/1
 switchport trunk encapsulation dot1q
 switchport mode trunk
 no shutdown
@@ -65,7 +65,7 @@ end
 
 
 conf t
-int g0/1
+int g0/2
 switchport mode access
 switchport access vlan 99
 no shutdown
