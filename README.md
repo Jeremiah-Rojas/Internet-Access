@@ -105,7 +105,9 @@ crypto key generate rsa
 
 end
 
-[BREAK]: These configurations set up subinterfaces which are necessary for traffic from each VLAN to go out to the internet and to communicate with each other. This may not always be ideal.
+[BREAK]: These configurations set up subinterfaces which are
+necessary for traffic from each VLAN to go out to the internet
+and to communicate with each other. This may not always be ideal.
 conf t
 interface g0/1.99
 encapsulation dot1Q 99
