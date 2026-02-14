@@ -82,6 +82,7 @@ wr
 
 router configurations:
 ```
+[BREAK]: These configurations set up the native VLAN
 conf t
 host cisco-router
 int g0/1
@@ -89,7 +90,7 @@ ip address 192.168.0.1 255.255.255.0
 no shut
 end
 
-
+[BREAK]: These configurations set up SSH
 conf t
 username msfadmin pass msfadmin
 username msfadmin priv 15
@@ -104,7 +105,7 @@ crypto key generate rsa
 
 end
 
-
+[BREAK]: These configurations set up subinterfaces which are necessary for traffic from each VLAN to go out to the internet and to communicate with each other. This may not always be ideal.
 conf t
 interface g0/1.99
 encapsulation dot1Q 99
