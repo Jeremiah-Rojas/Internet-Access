@@ -16,14 +16,17 @@
 
 ## Configurations
 
-Management Computer: </br><img width="699" height="352" alt="image" src="https://github.com/user-attachments/assets/81443bbf-97c4-4bd7-a490-4209e3235cb9" />
+The following configurations can be performed on the "/etc/network/interfaces" configuration file.
+</br>Management Computer: </br><img width="699" height="352" alt="image" src="https://github.com/user-attachments/assets/81443bbf-97c4-4bd7-a490-4209e3235cb9" />
 
 User 2: </br><img width="699" height="352" alt="image" src="https://github.com/user-attachments/assets/b56bc3c4-69ea-4cde-ba62-9d37163c457a" />
 
 User 3: </br><img width="699" height="352" alt="image" src="https://github.com/user-attachments/assets/69a60833-f45a-46d5-a055-35d7c9e88f08" />
 
-switch configurations:
+The following configurations can either copied and pasted as a whole bewteen the break points or manually entered.
+</br>switch configurations:
 ```
+[BREAK]: These configurations set up the management VLAN which is VLAN 99
 enable
 conf t
 host cisco-switch
@@ -35,14 +38,14 @@ ip address 192.168.99.10 255.255.255.0
 no shut
 end
 
-
+[BREAK]: These configurations set up the native VLAN where all untagged VLAN traffic is passed
 conf t
 int vlan 1
 ip address 192.168.0.10 255.255.255.0 
 no shut
 end
 
-
+[BREAK]: These configurations set up SSH
 enable
 conf t
 username msfadmin pass msfadmin
@@ -58,7 +61,7 @@ crypto key generate rsa
 
 end
 
-
+[BREAK]: These configurations set up the trunk port which passes traffic from multiple VLANs across one link
 conf t
 interface g0/1
 switchport trunk encapsulation dot1q
@@ -66,7 +69,7 @@ switchport mode trunk
 no shutdown
 end
 
-
+[BREAK]: These configurations allow the Management computer to communicate with the switch
 conf t
 int g0/2
 switchport mode access
