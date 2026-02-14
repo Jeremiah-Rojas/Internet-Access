@@ -117,7 +117,8 @@ wr
 ```
 
 ## Script in Action
-This is the script taking in input for the Sales VLAN which will be VLAN 2: </br><img width="709" height="369" alt="image" src="https://github.com/user-attachments/assets/53075d5a-7a0f-4a4f-896a-bc8864ba1678" />
+__Note: the IP address assigned to the  must always be ```192.168.0.1``` which is the default gateway for native VLAN traffic.__
+</br>This is the script taking in input for the Sales VLAN which will be VLAN 2: </br><img width="709" height="369" alt="image" src="https://github.com/user-attachments/assets/53075d5a-7a0f-4a4f-896a-bc8864ba1678" />
 </br>Now ```user 2``` can reach the internet from the Sales VLAN: </br><img width="461" height="232" alt="image" src="https://github.com/user-attachments/assets/769e1f70-574b-49ec-988a-d70d935b84ce" />
 
 
