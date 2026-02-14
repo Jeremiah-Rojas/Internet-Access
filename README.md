@@ -130,7 +130,149 @@ This is the script taking in input for the Marketing VLAN which will be VLAN 3: 
 </br>__It is recommended to ssh manually first.__
 SSH to the switch: <img width="699" height="352" alt="image" src="https://github.com/user-attachments/assets/2c3d963c-f9eb-4819-80ea-dba8dde96ce4" />
 SSH to the router: <img width="699" height="352" alt="image" src="https://github.com/user-attachments/assets/0a0e5434-e735-409a-b79b-3ae62009cacf" />
-</br>Afterwards you can exit the SSH sessions and then run the following script answering the questions accordingly.
+</br>Afterwards you can exit the SSH sessions and then run the following script answering the questions accordingly:
+```
+# This is the improved version of the script
+from netmiko import ConnectHandler
+# ------------------------------ DEVICE DEFINITIONS ------------------------------
+iosv_l2 = {
+    'device_type': 'cisco_ios',
+    'ip': '192.168.99.10',
+    'username': 'msfadmin',
+    'password': 'msfadmin'
+}
+iosv = {
+    'device_type': 'cisco_ios',
+    'ip': '192.168.99.1',
+    'username': 'msfadmin',
+    'password': 'msfadmin'
+}
 
+# ------------------------------ USER INPUT ------------------------------
+config_decision = input("Has this script been run before? (y/n): ")
+vlan_name = input("Enter name of new VLAN: ")
+vlan_number = input("Enter VLAN number (Ex: 10): ")
+vlan_int = input(
+    f"Enter access interface(s) for {vlan_name}, (g0/0,g0/1,etc.): "
+)
+vlan_interfaces = vlan_int.replace(" ", "")
+interfaces = vlan_interfaces.split(",")
+trunk_port = input("Which switch interface is the trunk port?: ")
+internet_link = input("Which router interface is connected to the internet?: ")
+switch_link = input("Which router interface is connected to the switch?: ")
+switch_link_ip = input(f"What IP should be assigned to {switch_link} (native VLAN): ")
+
+# NAT ACL number (single, global)
+NAT_ACL = 100
+
+# ------------------------------ ROUTER CONFIGURATION ------------------------------
+if config_decision.lower() == "n":
+    net_connect = ConnectHandler(**iosv)
+
+    router_commands = [
+        # Internet-facing interface
+        f"interface {internet_link}",
+        "ip address dhcp",
+        "ip nat outside",
+        "no shutdown",
+
+        # Native VLAN interface to switch
+        f"interface {switch_link}",
+        f"ip address {switch_link_ip} 255.255.255.0",
+        "ip nat inside",
+        "no shutdown",
+
+        # NAT ACL (append-safe)
+        f"access-list {NAT_ACL} permit ip 192.168.{vlan_number}.0 0.0.0.255 any",
+
+        # NAT (defined ONCE)
+        f"ip nat inside source list {NAT_ACL} interface {internet_link} overload",
+
+        # Default route
+        "ip route 0.0.0.0 0.0.0.0 192.168.122.1",
+
+        # Optional router DNS (router-only)
+        "no ip domain-lookup"
+        ]
+
+    router_commands.extend([
+            f"access-list {NAT_ACL} permit ip 192.168.0.0 0.0.0.255 any"
+        ])
+        # VLAN subinterface (router-on-a-stick)
+    router_vlan_commands = [
+            f"interface {switch_link}.{vlan_number}",
+            f"encapsulation dot1Q {vlan_number}",
+            f"ip address 192.168.{vlan_number}.1 255.255.255.0",
+            "ip nat inside",
+            "no shutdown"
+        ]
+
+    print("Applying router configuration...")
+    net_connect.send_config_set(router_commands)
+    net_connect.send_config_set(router_vlan_commands)
+    net_connect.save_config()
+    net_connect.disconnect()
+else:
+    net_connect = ConnectHandler(**iosv)
+
+    router_commands2 = [
+        f"interface {switch_link}",
+        "ip nat inside",
+        "no shutdown",
+        f"access-list {NAT_ACL} permit ip 192.168.{vlan_number}.0 0.0.0.255 any",
+        f"ip nat inside source list {NAT_ACL} interface {internet_link} overload"
+    ]
+    
+    router_vlan_commands2 = [
+        f"interface {switch_link}.{vlan_number}",
+        f"encapsulation dot1Q {vlan_number}",
+        f"ip address 192.168.{vlan_number}.1 255.255.255.0",
+        "ip nat inside",
+        "no shutdown"
+    ]
+    print("Applying router configuration...")
+    net_connect.send_config_set(router_commands2)
+    net_connect.send_config_set(router_vlan_commands2)
+    net_connect.save_config()
+    net_connect.disconnect()
+
+# ------------------------------ SWITCH CONFIGURATION ------------------------------
+net_connect = ConnectHandler(**iosv_l2)
+
+switch_commands = []
+
+# VLAN creation
+switch_commands.extend([
+    f"vlan {vlan_number}",
+    f"name {vlan_name}"
+])
+
+# Access ports
+for intf in interfaces:
+    switch_commands.extend([
+        f"interface {intf}",
+        "switchport mode access",
+        f"switchport access vlan {vlan_number}",
+        "no shutdown",
+        "exit"
+    ])
+
+# Trunk port
+switch_commands.extend([
+    f"interface {trunk_port}",
+    "switchport trunk encapsulation dot1q",
+    "switchport mode trunk",
+    f"switchport trunk allowed vlan add {vlan_number}",
+    "no shutdown"
+])
+
+print("Applying switch configuration...")
+net_connect.send_config_set(switch_commands)
+net_connect.save_config()
+net_connect.disconnect()
+print("Switch configuration complete.\n")
+
+print("Configuration complete. VLAN has internet access.")
+```
 
 
