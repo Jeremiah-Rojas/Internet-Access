@@ -113,12 +113,12 @@ wr
 ```
 
 ## Script in Action
-This is the script taking in input for the Sales VLAN which will be VLAN 2: </br><img width="709" height="362" alt="image" src="https://github.com/user-attachments/assets/53075d5a-7a0f-4a4f-896a-bc8864ba1678" />
-</br>Now ```user 2``` can reach the internet from the Sales VLAN: </br><img width="559" height="281" alt="image" src="https://github.com/user-attachments/assets/769e1f70-574b-49ec-988a-d70d935b84ce" />
+This is the script taking in input for the Sales VLAN which will be VLAN 2: </br><img width="709" height="369" alt="image" src="https://github.com/user-attachments/assets/53075d5a-7a0f-4a4f-896a-bc8864ba1678" />
+</br>Now ```user 2``` can reach the internet from the Sales VLAN: </br><img width="461" height="232" alt="image" src="https://github.com/user-attachments/assets/769e1f70-574b-49ec-988a-d70d935b84ce" />
 
 
-This is the script taking in input for the Marketing VLAN which will be VLAN 3: </br><img width="709" height="362" alt="image" src="https://github.com/user-attachments/assets/daa6c7e1-8e50-4f25-a0f2-1a0ed5be3723" />
-</br>Now ```user 3``` can reach the internet from the Marketing VLAN: </br><img width="559" height="281" alt="image" src="https://github.com/user-attachments/assets/25c99df8-a874-4833-8bce-b49c337c2632" />
+This is the script taking in input for the Marketing VLAN which will be VLAN 3: </br><img width="709" height="372" alt="image" src="https://github.com/user-attachments/assets/daa6c7e1-8e50-4f25-a0f2-1a0ed5be3723" />
+</br>Now ```user 3``` can reach the internet from the Marketing VLAN: </br><img width="461" height="232" alt="image" src="https://github.com/user-attachments/assets/25c99df8-a874-4833-8bce-b49c337c2632" />
 
 </br>You can see the newly created VLANs on the switch: </br><img width="699" height="352" alt="image" src="https://github.com/user-attachments/assets/aa1bb05d-e6b5-4fd4-999f-913b9345abdd" />
 
