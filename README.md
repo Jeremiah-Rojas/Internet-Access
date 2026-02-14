@@ -16,11 +16,11 @@
 
 ## Configurations
 
-(management)<img width="1398" height="704" alt="image" src="https://github.com/user-attachments/assets/81443bbf-97c4-4bd7-a490-4209e3235cb9" />
+Management Computer: <img width="699" height="352" alt="image" src="https://github.com/user-attachments/assets/81443bbf-97c4-4bd7-a490-4209e3235cb9" />
 
-(user2)<img width="1393" height="702" alt="image" src="https://github.com/user-attachments/assets/b56bc3c4-69ea-4cde-ba62-9d37163c457a" />
+User 2: <img width="699" height="352" alt="image" src="https://github.com/user-attachments/assets/b56bc3c4-69ea-4cde-ba62-9d37163c457a" />
 
-(user3)<img width="1394" height="707" alt="image" src="https://github.com/user-attachments/assets/69a60833-f45a-46d5-a055-35d7c9e88f08" />
+User 3: <img width="699" height="352" alt="image" src="https://github.com/user-attachments/assets/69a60833-f45a-46d5-a055-35d7c9e88f08" />
 
 switch configurations:
 ```
